@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentin-napi oldal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body { background: url('a.jpg') no-repeat center center fixed;
+        background-size: cover;
+        position: relative;
+        overflow: hidden;
+        font-family: 'Arial', sans-serif;
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+
+        }
+        .heart {
+            position: absolute;
+            color: pink;
+            font-size: 1.5rem;
+            animation: float 5s infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            margin: auto;
+            transition: transform 0.5s ease;
+        }
+        .carousel-item img:hover {
+            transform: scale(1.05);
+        }
+        #consentModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+        .content-box {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div id="consentModal">
+        <div class="text-center bg-light p-4 rounded">
+            <h2 class="mb-3">biztos akarsz lenni a valentinom?</h2>
+            <button class="btn btn-success me-3" onclick="answerLove('igen')">Igen</button>
+            <button class="btn btn-danger" onclick="answerLove('nem')">Nem</button>
+        </div>
+    </div>
+    
+    <div class="container text-center mt-4">
+        <h1 class="text-primary">💙 Boldog Valentin-napot! 💙</h1>
+        <p class="fs-5 text-danger">Szeretlek, és mindig veled szeretnék lenni! 💖</p>
+        
+        <div class="row align-items-center mt-3">
+            <div class="col-md-12">
+                <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="1.jpg" class="d-block" alt="Kép 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="2.jpg" class="d-block" alt="Kép 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="3.jpg" class="d-block" alt="Kép 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="4.jpg" class="d-block" alt="Kép 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="5.jpg" class="d-block" alt="Kép 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="6.jpg" class="d-block" alt="Kép 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="7.jpg" class="d-block" alt="Kép 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="8.jpg" class="d-block" alt="Kép 3">
+                        </div>
+                    
+                        
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-box mt-3">
+            <p class="fs-6">Köszönöm, hogy vagy nekem! 💕 Te vagy a legcsodálatosabb dolog az életemben, és mindig boldoggá teszel. Szeretném, ha tudnád, mennyire különleges vagy számomra. 💖</p>
+        </div>
+
+        <button class="btn btn-primary mt-3" onclick="showPopup()">Kattints ideee! 💕 💕</button>
+    </div>
+    
+    <script>
+        function answerLove(answer) {
+            document.getElementById('consentModal').remove();
+        }
+        function showPopup() {
+            alert("💖 Meglepetés! Boldog Valentin-napot! Nagyooon szeretleeek💖");
+        }
+        function createHearts() {
+            for (let i = 0; i < 15; i++) {
+                let heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }
+        }
+        setInterval(createHearts, 1200);
+    </script>
+</body>
+</html>
